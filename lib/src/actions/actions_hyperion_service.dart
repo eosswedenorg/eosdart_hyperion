@@ -1,4 +1,5 @@
 import 'package:chopper/chopper.dart';
+import 'package:eosdart_hyperion/src/dtos/get_actions_response.dart';
 import 'package:meta/meta.dart';
 
 import '../hyperion_paths.dart' as path;
@@ -21,7 +22,7 @@ abstract class ActionsHyperionService extends ChopperService {
   @Get(
     path: path.getActions,
   )
-  Future<Response> getActions({
+  Future<Response<GetActionsResponse>> getActions({
     @Query() @required String account,
     @Query() String track,
     @Query() String filter,
@@ -48,5 +49,3 @@ abstract class ActionsHyperionService extends ChopperService {
     return _$ActionsHyperionService(client);
   }
 }
-
-

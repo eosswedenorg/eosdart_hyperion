@@ -16,7 +16,7 @@ class _$ActionsHyperionService extends ActionsHyperionService {
   final definitionType = ActionsHyperionService;
 
   @override
-  Future<Response> getActions(
+  Future<Response<GetActionsResponse>> getActions(
       {String account,
       String track,
       String filter,
@@ -39,6 +39,6 @@ class _$ActionsHyperionService extends ActionsHyperionService {
       'simple': simple
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<dynamic, dynamic>($request);
+    return client.send<GetActionsResponse, GetActionsResponse>($request);
   }
 }

@@ -24,7 +24,7 @@ abstract class GetActionsResponse
 
   GetActionsResponse._();
 
-  factory GetActionsResponse([updates(GetActionsResponseBuilder b)]) =
+  factory GetActionsResponse([Function(GetActionsResponseBuilder b) updates]) =
       _$GetActionsResponse;
 
   static Serializer<GetActionsResponse> get serializer =>
