@@ -2,7 +2,7 @@ name: eosdart_hyperion
 description: EOSIO-based blockchain RPC Hyperion API client for Dart and Flutter applications.
 version: 0.0.1
 author: Javier Mendonça <javier@eossweden.org>
-homepage:
+homepage: https://github.com/eosswedenorg/eosdart_hyperion
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
