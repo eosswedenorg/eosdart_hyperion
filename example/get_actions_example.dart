@@ -5,6 +5,6 @@ void main() async {
       ActionsHyperionService.create(baseUrl: 'https://api.eossweden.org');
 
   await actionsHyperionService
-      .getActions(account: 'eosswedenorg', simple: false, limit: 3)
+      .getActions(account: 'eosswedenorg', simple: true, limit: 3)
       .then((response) => print(response.body));
 }
