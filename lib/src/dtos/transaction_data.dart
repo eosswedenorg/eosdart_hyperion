@@ -1,10 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'transaction_data.g.dart';
 
 @JsonSerializable()
-class TransactionData implements Equatable {
+class TransactionData {
   final String from;
 
   final String to;
@@ -28,8 +27,6 @@ class TransactionData implements Equatable {
   Map<String, dynamic> toJson() => _$TransactionDataToJson(this);
 
   @override
-  List<Object> get props => [from, to, amount, symbol, memo, quantity];
-
-  @override
-  bool get stringify => true;
+  String toString() =>
+      'TransactionData{from: $from, to: $to, amount: $amount, symbol: $symbol, memo: $memo, quantity: $quantity}';
 }

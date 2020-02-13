@@ -1,10 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'simple_action.g.dart';
 
 @JsonSerializable()
-class SimpleAction implements Equatable {
+class SimpleAction {
   final int block;
 
   final String timestamp;
@@ -37,17 +36,6 @@ class SimpleAction implements Equatable {
   Map<String, dynamic> toJson() => _$SimpleActionToJson(this);
 
   @override
-  List<Object> get props => [
-        block,
-        timestamp,
-        irreversible,
-        contract,
-        action,
-        actors,
-        notified,
-        transactionId
-      ];
-
-  @override
-  bool get stringify => true;
+  String toString() =>
+      'SimpleAction{block: $block, timestamp: $timestamp, irreversible: $irreversible, contract: $contract, action: $action, actors: $actors, notified: $notified, transactionId: $transactionId, data: $data}';
 }

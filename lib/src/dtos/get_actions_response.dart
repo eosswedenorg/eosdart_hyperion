@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'simple_action.dart';
@@ -6,7 +5,7 @@ import 'simple_action.dart';
 part 'get_actions_response.g.dart';
 
 @JsonSerializable()
-class GetActionsResponse implements Equatable {
+class GetActionsResponse {
   @JsonKey(name: 'query_time')
   final int queryTime;
 
@@ -31,8 +30,6 @@ class GetActionsResponse implements Equatable {
   Map<String, dynamic> toJson() => _$GetActionsResponseToJson(this);
 
   @override
-  List<Object> get props => [queryTime, cached, lib, simpleActions];
-
-  @override
-  bool get stringify => true;
+  String toString() =>
+      'GetActionsResponse{queryTime: $queryTime, cached: $cached, lib: $lib, simpleActions: $simpleActions}';
 }
