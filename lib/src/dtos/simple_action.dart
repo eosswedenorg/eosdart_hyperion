@@ -19,13 +19,14 @@ class SimpleAction implements Equatable {
 
   final String notified;
 
-  final String transaction_id;
+  @JsonKey(name: 'transaction_id')
+  final String transactionId;
 
   @JsonKey(nullable: true)
   final dynamic data;
 
   SimpleAction(this.block, this.timestamp, this.irreversible, this.contract,
-      this.action, this.actors, this.notified, this.transaction_id,
+      this.action, this.actors, this.notified, this.transactionId,
       {this.data});
 
   static const fromJsonFactory = _$SimpleActionFromJson;
@@ -36,11 +37,6 @@ class SimpleAction implements Equatable {
   Map<String, dynamic> toJson() => _$SimpleActionToJson(this);
 
   @override
-  String toString() {
-    return 'SimpleAction{block: $block, timestamp: $timestamp, irreversible: $irreversible, contract: $contract, action: $action, actors: $actors, notified: $notified, transaction_id: $transaction_id, data: $data}';
-  }
-
-  @override
   List<Object> get props => [
         block,
         timestamp,
@@ -49,7 +45,7 @@ class SimpleAction implements Equatable {
         action,
         actors,
         notified,
-        transaction_id
+        transactionId
       ];
 
   @override

@@ -29,6 +29,6 @@ Map<String, dynamic> _$SimpleActionToJson(SimpleAction instance) =>
       'action': instance.action,
       'actors': instance.actors,
       'notified': instance.notified,
-      'transaction_id': instance.transaction_id,
+      'transaction_id': instance.transactionId,
       'data': instance.data,
     };

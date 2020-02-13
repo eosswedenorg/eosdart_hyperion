@@ -7,7 +7,8 @@ part 'get_actions_response.g.dart';
 
 @JsonSerializable()
 class GetActionsResponse implements Equatable {
-  final int query_time;
+  @JsonKey(name: 'query_time')
+  final int queryTime;
 
   final bool cached;
 
@@ -19,7 +20,7 @@ class GetActionsResponse implements Equatable {
   @JsonKey(name: 'simple_actions', nullable: true)
   final List<SimpleAction> simpleActions;
 
-  GetActionsResponse(this.query_time, this.cached, this.lib,
+  GetActionsResponse(this.queryTime, this.cached, this.lib,
       {this.simpleActions});
 
   static const fromJsonFactory = _$GetActionsResponseFromJson;
@@ -30,7 +31,7 @@ class GetActionsResponse implements Equatable {
   Map<String, dynamic> toJson() => _$GetActionsResponseToJson(this);
 
   @override
-  List<Object> get props => [query_time, cached, lib, simpleActions];
+  List<Object> get props => [queryTime, cached, lib, simpleActions];
 
   @override
   bool get stringify => true;

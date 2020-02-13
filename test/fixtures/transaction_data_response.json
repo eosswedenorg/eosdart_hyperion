@@ -1,0 +1,8 @@
+{
+  "from": "eosio.vpay",
+  "to": "eosswedenorg",
+  "amount": 574.1867,
+  "symbol": "EOS",
+  "quantity": "574.1867 EOS",
+  "memo": "producer vote pay"
+}

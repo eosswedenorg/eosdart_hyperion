@@ -1,0 +1,21 @@
+{
+  "block": 104917777,
+  "timestamp": "2020-02-13T08:06:30.000",
+  "irreversible": true,
+  "contract": "apibenchmark",
+  "action": "report",
+  "actors": "eosswedenorg@benchmark",
+  "notified": "apibenchmark",
+  "transaction_id": "b2d395a6fed26dcb3989f6f98778a288f0affc9b03d2e2fabfd1aff6e9b776aa",
+  "data": {
+    "tester": "eosswedenorg",
+    "tests": [
+      {
+        "owner": "eosdacserver",
+        "url": "https://eu.eosdac.io",
+        "status": 200,
+        "elapsed": 178
+      }
+    ]
+  }
+}

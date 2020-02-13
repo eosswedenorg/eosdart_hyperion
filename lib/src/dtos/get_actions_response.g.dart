@@ -20,7 +20,7 @@ GetActionsResponse _$GetActionsResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$GetActionsResponseToJson(GetActionsResponse instance) =>
     <String, dynamic>{
-      'query_time': instance.query_time,
+      'query_time': instance.queryTime,
       'cached': instance.cached,
       'lib': instance.lib,
       'simple_actions': instance.simpleActions,
