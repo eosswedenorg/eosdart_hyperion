@@ -1,27 +1,35 @@
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'transaction_data.g.dart';
 
-abstract class TransactionData
-    implements Built<TransactionData, TransactionDataBuilder> {
-  String get from;
+@JsonSerializable()
+class TransactionData implements Equatable {
+  final String from;
 
-  String get to;
+  final String to;
 
-  double get amount;
+  final double amount;
 
-  String get symbol;
+  final String symbol;
 
-  String get memo;
+  final String memo;
 
-  String get quantity;
+  final String quantity;
 
-  TransactionData._();
+  TransactionData(
+      this.from, this.to, this.amount, this.symbol, this.memo, this.quantity);
 
-  factory TransactionData([Function(TransactionDataBuilder b) updates]) =
-      _$TransactionData;
+  static const fromJsonFactory = _$TransactionDataFromJson;
 
-  static Serializer<TransactionData> get serializer =>
-      _$transactionDataSerializer;
+  factory TransactionData.fromJson(Map<String, dynamic> json) =>
+      _$TransactionDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionDataToJson(this);
+
+  @override
+  List<Object> get props => [from, to, amount, symbol, memo, quantity];
+
+  @override
+  bool get stringify => true;
 }

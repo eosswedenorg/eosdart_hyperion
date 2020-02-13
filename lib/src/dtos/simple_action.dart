@@ -1,43 +1,57 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-
-import 'action.dart';
-import 'transaction_data.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'simple_action.g.dart';
 
-abstract class SimpleAction
-    implements Built<SimpleAction, SimpleActionBuilder> {
-  int get block;
+@JsonSerializable()
+class SimpleAction implements Equatable {
+  final int block;
 
-  String get timestamp;
+  final String timestamp;
 
-  bool get irreversible;
+  final bool irreversible;
 
-  String get contract;
+  final String contract;
 
-  String get action;
+  final String action;
 
-  String get actors;
+  final String actors;
 
-  String get notified;
+  final String notified;
 
-  String get transaction_id;
+  final String transaction_id;
 
-  TransactionData get data;
+  @JsonKey(nullable: true)
+  final dynamic data;
 
-  @nullable
-  BuiltList<Action> get actions;
+  SimpleAction(this.block, this.timestamp, this.irreversible, this.contract,
+      this.action, this.actors, this.notified, this.transaction_id,
+      {this.data});
 
-  @nullable
-  @BuiltValueField(wireName: 'simple_actions')
-  BuiltList<SimpleAction> get simpleActions;
+  static const fromJsonFactory = _$SimpleActionFromJson;
 
-  SimpleAction._();
+  factory SimpleAction.fromJson(Map<String, dynamic> json) =>
+      _$SimpleActionFromJson(json);
 
-  factory SimpleAction([Function(SimpleActionBuilder b) updates]) =
-      _$SimpleAction;
+  Map<String, dynamic> toJson() => _$SimpleActionToJson(this);
 
-  static Serializer<SimpleAction> get serializer => _$simpleActionSerializer;
+  @override
+  String toString() {
+    return 'SimpleAction{block: $block, timestamp: $timestamp, irreversible: $irreversible, contract: $contract, action: $action, actors: $actors, notified: $notified, transaction_id: $transaction_id, data: $data}';
+  }
+
+  @override
+  List<Object> get props => [
+        block,
+        timestamp,
+        irreversible,
+        contract,
+        action,
+        actors,
+        notified,
+        transaction_id
+      ];
+
+  @override
+  bool get stringify => true;
 }

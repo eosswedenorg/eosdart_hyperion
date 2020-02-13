@@ -1,32 +1,37 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'action.dart';
 import 'simple_action.dart';
 
 part 'get_actions_response.g.dart';
 
-abstract class GetActionsResponse
-    implements Built<GetActionsResponse, GetActionsResponseBuilder> {
-  int get query_time;
+@JsonSerializable()
+class GetActionsResponse implements Equatable {
+  final int query_time;
 
-  bool get cached;
+  final bool cached;
 
-  int get lib;
+  final int lib;
 
-  @nullable
-  BuiltList<Action> get actions;
+  //@JsonKey(nullable: true)
+  //final List<Action> actions;
 
-  @nullable
-  @BuiltValueField(wireName: 'simple_actions')
-  BuiltList<SimpleAction> get simpleActions;
+  @JsonKey(name: 'simple_actions', nullable: true)
+  final List<SimpleAction> simpleActions;
 
-  GetActionsResponse._();
+  GetActionsResponse(this.query_time, this.cached, this.lib,
+      {this.simpleActions});
 
-  factory GetActionsResponse([Function(GetActionsResponseBuilder b) updates]) =
-      _$GetActionsResponse;
+  static const fromJsonFactory = _$GetActionsResponseFromJson;
 
-  static Serializer<GetActionsResponse> get serializer =>
-      _$getActionsResponseSerializer;
+  factory GetActionsResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetActionsResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GetActionsResponseToJson(this);
+
+  @override
+  List<Object> get props => [query_time, cached, lib, simpleActions];
+
+  @override
+  bool get stringify => true;
 }

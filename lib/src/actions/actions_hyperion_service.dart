@@ -1,5 +1,7 @@
 import 'package:chopper/chopper.dart';
+import 'package:eosdart_hyperion/eosdart_hyperion.dart';
 import 'package:eosdart_hyperion/src/dtos/get_actions_response.dart';
+import 'package:eosdart_hyperion/src/hyperion_client.dart';
 import 'package:meta/meta.dart';
 
 import '../hyperion_paths.dart' as path;
@@ -8,9 +10,6 @@ part 'actions_hyperion_service.chopper.dart';
 
 @ChopperApi(baseUrl: '/v2')
 abstract class ActionsHyperionService extends ChopperService {
-  static const _headerKeyAccept = 'accept';
-  static const _headerValueJson = 'application/json';
-
   /// Get actions for an [account].
   ///
   /// This endpoint accepts generic filters based on indexed fields,
@@ -34,18 +33,8 @@ abstract class ActionsHyperionService extends ChopperService {
     @Query() bool simple,
   });
 
-  static ActionsHyperionService create({@required String baseUrl}) {
-    final client = ChopperClient(
-      baseUrl: baseUrl,
-      interceptors: [
-        HttpLoggingInterceptor(),
-        HeadersInterceptor({_headerKeyAccept: _headerValueJson}),
-      ],
-      services: [
-        _$ActionsHyperionService(),
-      ],
-      converter: JsonConverter(),
-    );
-    return _$ActionsHyperionService(client);
-  }
+  static ActionsHyperionService service = _$ActionsHyperionService();
+
+  static ActionsHyperionService create({@required HyperionClient client}) =>
+      _$ActionsHyperionService(client);
 }
