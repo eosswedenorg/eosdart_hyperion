@@ -1,3 +1,4 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - Initial release
 
-* TODO: Describe initial release.
+* Contains the foundation for the Hyperion API client
+* Implements the endpoint to fetch (simple) actions
